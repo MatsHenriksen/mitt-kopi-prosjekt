@@ -1,0 +1,34 @@
+body {
+  background-color: #176eba9e;
+  text-align: center;
+  padding: 1em;
+  font-family: Arial, sans-serif;
+  color: #eae3e3;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  width: 700px;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin: 0.5em 0;
+  position: center;
+}
+
+.github-knapp {
+  display: inline-block;
+  background-color: #24292e;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.github-knapp:hover {
+  background-color: #444c56;
+}
