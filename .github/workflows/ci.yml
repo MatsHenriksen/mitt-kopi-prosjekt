@@ -1,0 +1,37 @@
+name: Mats workflow
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Validate HTML
+      run: |
+        # Installer HTML validator
+        sudo apt-get update
+        sudo apt-get install -y tidy
+        
+        # Sjekk alle HTML-filer
+        find . -name "*.html" -exec tidy -errors {} \;
+    
+    - name: Check CSS
+      run: |
+        # Installer CSS validator (npm pakke)
+        npm install -g css-validator
+        
+        # Valider CSS-filer
+        find . -name "*.css" -exec css-validator {} \;
+    
+    - name: Check for common issues
+      run: |
+        echo "Checking for TODO comments..."
+        grep -r "TODO\|FIXME\|HACK" --include="*.js" --include="*.css" --include="*.html" . || true
